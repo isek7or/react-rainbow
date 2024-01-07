@@ -5,21 +5,19 @@ import ColorForm from './Components/ColorForm'
 function App() {
   let [colors, setColors] = useState(['violet', 'blue', 'lightblue', 'green', 'greenyellow', 'yellow', 'orange', 'red'])
 
-  let colorMap = colors.map((color, i) => {
-    return (
-      <ColorBlock color={color} />
-    )
-  })
-
   const addColor = (newColor) => {
     setColors([...colors, newColor]);
   };
 
+  let colorMap = colors.map((color, i) => {
+    return (
+      <ColorBlock key={i} color={color} />
+    )
+  })
+
   return (
     <div className="App">
-      {colors.map((color, i) =>
-        <ColorBlock key={i} color={color} />
-      )}      
+      {colorMap}
       <ColorForm addColor={addColor} />
     </div>
   )
